@@ -55,21 +55,19 @@ class TipsCalculatorTableViewController: UITableViewController {
     func updateResults() {
         for indexPath in tableView.indexPathsForVisibleRows! {
             let row = indexPath.row
-            if (row < (tableView.indexPathsForVisibleRows?.count)!) {
-                let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0))
-                if (cell?.reuseIdentifier == "resultCell") {
-                    let amountLabel = cell?.viewWithTag(4) as! UILabel
-                    let totalLabel = cell?.viewWithTag(5) as! UILabel
-                    let tipPercentageString = TipsCalculatorConfigurations.sharedInstance.getValue(at: row-1)
-                    let tipPercentage = Double(tipPercentageString)! / 100
-                    let input = Double(userInput)
-                    if (input == nil) {
-                        amountLabel.text = ""
-                        totalLabel.text = ""
-                    } else {
-                        amountLabel.text = "+ $" + String(format: "%.2f", tipPercentage * input!)
-                        totalLabel.text = "= $" + String(format: "%.2f", input! + tipPercentage * input!)
-                    }
+            let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0))
+            if (cell?.reuseIdentifier == "resultCell") {
+                let amountLabel = cell?.viewWithTag(4) as! UILabel
+                let totalLabel = cell?.viewWithTag(5) as! UILabel
+                let tipPercentageString = TipsCalculatorConfigurations.sharedInstance.getValue(at: row-1)
+                let tipPercentage = Double(tipPercentageString)! / 100
+                let input = Double(userInput)
+                if (input == nil) {
+                    amountLabel.text = ""
+                    totalLabel.text = ""
+                } else {
+                    amountLabel.text = "+ $" + String(format: "%.2f", tipPercentage * input!)
+                    totalLabel.text = "= $" + String(format: "%.2f", input! + tipPercentage * input!)
                 }
             }
         }

@@ -29,7 +29,7 @@ class TipsCalculatorConfigurations: NSObject {
     func loadPreference() {
         let tipsToShowSaved = UserDefaults.standard.array(forKey: "tipsToShow")
         if (tipsToShowSaved == nil) {
-            tipsToShow = ["15", "18", "20", "22"]
+            tipsToShow = ["15", "18", "20", "22", "25", "30"]
             savePreference()
         } else {
             tipsToShow = tipsToShowSaved as! [String]

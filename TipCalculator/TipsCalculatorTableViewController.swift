@@ -96,6 +96,7 @@ class TipsCalculatorTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: "inputCell", for: indexPath)
             cell.backgroundColor = TipsCalculatorConfigurations.sharedInstance.displayColor
             let textField = cell.viewWithTag(1) as! UITextField
+            textField.becomeFirstResponder()
             textField.addTarget(self, action: #selector(typingChanged), for: UIControlEvents.editingChanged)
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath)
